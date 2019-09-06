@@ -1,0 +1,4 @@
+com\example\applidusiecle\SpringSecurityConfig.class
+META-INF\spring-configuration-metadata.json
+com\example\applidusiecle\ApplidusiecleApplication.class
+com\example\applidusiecle\controller\HelloController.class

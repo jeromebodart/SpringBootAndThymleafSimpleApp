@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.risa.dao.UserDao">
+
+	<resultMap type="com.risa.entities.User" id="User_Resultmap">
+		<id property="id" column="id" />
+		<result property="email" column="email" />
+		<result property="password" column="password" />
+	</resultMap>
+	sql
+	<sql id="getAllUsers">
+		SELECT id, username, first_name, last_name, email, password, avatar
+		FROM users
+	</sql>
+	<select id="getAllUsers" resultMap="User_Resultmap">
+		<include refid="getAllUsers" />
+	</select>
+	<select id="getUserByEmail" resultMap="User_Resultmap"
+		resultType="com.risa.entities.User">
+		<include refid="getAllUsers" />
+		WHERE
+		email = #{email}
+	</select>
+	<select id="getUserByUsername" resultMap="User_Resultmap"
+		resultType="com.risa.entities.User">
+		<include refid="getAllUsers" />
+		WHERE
+		username = #{username}
+	</select>
+	<select id="getUserByEmailOrUsername" resultMap="User_Resultmap"
+		resultType="com.risa.entities.User">
+		<include refid="getAllUsers" />
+		WHERE
+		email = #{identification} OR
+		username = #{identification}
+	</select>
+	<insert id="insertUser" parameterType="com.risa.entities.User">
+		INSERT INTO users (
+		first_name,
+		last_name,
+		email,
+		password,
+		avatar,
+		username)
+		values
+		(#{firstName}, #{lastName}, #{email}, #{password}, #{avatar},
+		#{username})
+	</insert>
+
+	<select id="selectUserById" parameterType="int"
+		resultMap="User_Resultmap">
+		SELECT id, username, first_name, last_name, email, password, avatar
+		FROM users
+		WHERE id = #{id}
+	</select>
+
+</mapper>

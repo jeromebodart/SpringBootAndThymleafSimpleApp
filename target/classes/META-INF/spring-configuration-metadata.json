@@ -1,0 +1,24 @@
+{
+  "groups": [
+    {
+      "name": "jwt",
+      "type": "com.example.applidusiecle.security.jwt.JwtProperties",
+      "sourceType": "com.example.applidusiecle.security.jwt.JwtProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "jwt.secret-key",
+      "type": "java.lang.String",
+      "sourceType": "com.example.applidusiecle.security.jwt.JwtProperties",
+      "defaultValue": "secret"
+    },
+    {
+      "name": "jwt.validity-in-ms",
+      "type": "java.lang.Long",
+      "sourceType": "com.example.applidusiecle.security.jwt.JwtProperties",
+      "defaultValue": 0
+    }
+  ],
+  "hints": []
+}
